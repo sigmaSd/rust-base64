@@ -1,3 +1,12 @@
+# Deprecated
+
+You can juse use
+
+```ts
+import { Buffer } from "node:buffer";
+Buffer.from(content).toString("base64");
+```
+
 # rust-base64
 
 Base64 encoding for javascript using rust and webassembly.
