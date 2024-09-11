@@ -1,4 +1,6 @@
-# Base64 encoding for javascript using rust and webassembly.
+# rust-base64
+
+Base64 encoding for javascript using rust and webassembly.
 
 ## Why?
 
@@ -10,6 +12,10 @@ large arrays.
 This library is meant to fix that.
 
 ## Usage
+
+## Examples
+
+**Example 1**
 
 ```typescript
 import { encodeBase64 } from "jsr:rust-base64";
