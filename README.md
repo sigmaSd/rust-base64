@@ -18,7 +18,7 @@ This library is meant to fix that.
 **Example 1**
 
 ```typescript
-import { encodeBase64 } from "jsr:rust-base64";
+import { encodeBase64 } from "jsr:@sigma/rust-base64";
 
 const input = new Uint8Array([72, 101, 108, 108, 111, 33]);
 const encoded = encodeBase64(input);
