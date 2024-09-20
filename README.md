@@ -49,7 +49,7 @@ assert(value === decoded);
 import {
   decodeBase64,
   encodeBase64,
-} from "https://esm.sh/jsr/@sigma/rust-base64";
+} from "https://esm.sh/jsr/@sigma/rust-base64@0.2.5";
 const value = "hello";
 const encoded = encodeBase64(new TextEncoder().encode(value));
 const decoded = new TextDecoder().decode(
