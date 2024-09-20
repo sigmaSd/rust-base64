@@ -1,7 +1,7 @@
 /**
  * # rust-base64
  *
- * Base64 encoding for javascript using rust and webassembly.
+ * Base64 encoding and decoding for javascript using rust and webassembly.
  *
  * ## Why?
  *
@@ -23,12 +23,12 @@
  *
  * @example
  * ```typescript
- * import { encodeBase64 } from "jsr:@sigma/rust-base64";
+ * import { encodeBase64, decodeBase64 } from "jsr:@sigma/rust-base64";
  * import assert from "node:assert";
  *
  * const value = "hello";
  * const encoded = encodeBase64(new TextEncoder().encode(value));
- * const decoded = atob(encoded);
+ * const decoded = new TextDecoder().decode(decodeBase64(new TextEncoder().encode(encoded)));
  *
  * assert(value === decoded);
  * ```
@@ -37,11 +37,11 @@
  *
  * @example
  * ```ts
- * import { encodeBase64 } from "https://esm.sh/jsr/@sigma/rust-base64"
+ * import { encodeBase64, decodeBase64 } from "https://esm.sh/jsr/@sigma/rust-base64"
  * const value = "hello";
  * const encoded = encodeBase64(new TextEncoder().encode(value));
- * const decoded = atob(encoded);
- * if (decoded !== value) throw new Error("encoded incorrectly")
+ * const decoded = new TextDecoder().decode(decodeBase64(new TextEncoder().encode(encoded)));
+ * if (decoded !== value) throw new Error("encoded/decoded incorrectly")
  * ```
  *
  * @module
@@ -50,7 +50,10 @@
 import { instantiate } from "./lib/rs_lib.generated.js";
 
 // NOTE: Figure out if this should be exposed to users?
-const exports: { encode: (input: Uint8Array) => string } = instantiate();
+const exports: {
+  encode: (input: Uint8Array) => string;
+  decode: (input: Uint8Array) => Uint8Array;
+} = instantiate();
 
 /**
  * Encodes a Uint8Array input into a Base64 string.
@@ -59,4 +62,13 @@ const exports: { encode: (input: Uint8Array) => string } = instantiate();
  */
 export function encodeBase64(input: Uint8Array): string {
   return exports.encode(input);
+}
+
+/**
+ * Decodes a Base64 encoded Uint8Array into a Uint8Array.
+ * @param {Uint8Array} input - The Base64 encoded Uint8Array to be decoded.
+ * @returns {Uint8Array} The decoded Uint8Array.
+ */
+export function decodeBase64(input: Uint8Array): Uint8Array {
+  return exports.decode(input);
 }

@@ -4,7 +4,8 @@
 export interface InstantiateResult {
   instance: WebAssembly.Instance;
   exports: {
-    encode: typeof encode
+    encode: typeof encode;
+    decode: typeof decode
   };
 }
 
@@ -27,3 +28,8 @@ export function instantiateWithInstance(): InstantiateResult;
 * @returns {string}
 */
 export function encode(input: Uint8Array): string;
+/**
+* @param {Uint8Array} input
+* @returns {Uint8Array}
+*/
+export function decode(input: Uint8Array): Uint8Array;

@@ -1,6 +1,6 @@
 # rust-base64
 
-Base64 encoding for javascript using rust and webassembly.
+Base64 encoding and decoding for javascript using rust and webassembly.
 
 ## Why?
 
@@ -29,12 +29,14 @@ Maybe this is still useful for browsers.
 **Example 1**
 
 ```typescript
-import { encodeBase64 } from "jsr:@sigma/rust-base64";
+import { decodeBase64, encodeBase64 } from "jsr:@sigma/rust-base64";
 import assert from "node:assert";
 
 const value = "hello";
 const encoded = encodeBase64(new TextEncoder().encode(value));
-const decoded = atob(encoded);
+const decoded = new TextDecoder().decode(
+  decodeBase64(new TextEncoder().encode(encoded)),
+);
 
 assert(value === decoded);
 ```
@@ -44,9 +46,14 @@ assert(value === decoded);
 **Example 2**
 
 ```ts
-import { encodeBase64 } from "https://esm.sh/jsr/@sigma/rust-base64";
+import {
+  decodeBase64,
+  encodeBase64,
+} from "https://esm.sh/jsr/@sigma/rust-base64";
 const value = "hello";
 const encoded = encodeBase64(new TextEncoder().encode(value));
-const decoded = atob(encoded);
-if (decoded !== value) throw new Error("encoded incorrectly");
+const decoded = new TextDecoder().decode(
+  decodeBase64(new TextEncoder().encode(encoded)),
+);
+if (decoded !== value) throw new Error("encoded/decoded incorrectly");
 ```
