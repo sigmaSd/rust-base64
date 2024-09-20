@@ -23,8 +23,8 @@ Deno.bench("node:buffer:encode", { group: "encoding" }, () => {
 Deno.bench("encodeBase64Std", { group: "encoding" }, () => {
   encodeBase64Std(input);
 });
-Deno.bench("atob", { group: "encoding", baseline: true }, () => {
-  atob(base64Input);
+Deno.bench("btoa", { group: "encoding", baseline: true }, () => {
+  btoa(base64Input);
 });
 
 Deno.bench("decodeBase64Wasm", { group: "decoding" }, () => {
