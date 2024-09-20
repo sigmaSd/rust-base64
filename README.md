@@ -10,8 +10,12 @@ In server runtimes you can use Node bufffer:
 
 ```ts
 import { Buffer } from "node:buffer";
-Buffer.from(content).toString("base64");
-Buffer.from(content, "base64");
+import assert from "node:assert";
+const content = btoa("hello");
+const encodeDecode = Buffer.from(Buffer.from(content, "base64")).toString(
+  "base64",
+);
+assert(content === encodeDecode);
 ```
 
 Maybe this is still useful for browsers.
@@ -24,19 +28,23 @@ Maybe this is still useful for browsers.
 
 ```typescript
 import { encodeBase64 } from "jsr:@sigma/rust-base64";
+import assert from "node:assert";
 
-const input = new Uint8Array([72, 101, 108, 108, 111, 33]);
-const encoded = encodeBase64(input);
-console.log(encoded);
+const value = "hello";
+const encoded = encodeBase64(new TextEncoder().encode(value));
+const decoded = atob(encoded);
+
+assert(value === decoded);
 ```
 
-- Browser **
+** Browser **
 
 **Example 2**
 
 ```ts
 import { encodeBase64 } from "https://esm.sh/jsr/@sigma/rust-base64";
-const input = new Uint8Array([72, 101, 108, 108, 111, 33]);
-const encoded = encodeBase64(input);
-console.log(encoded);
+const value = "hello";
+const encoded = encodeBase64(new TextEncoder().encode(value));
+const decoded = atob(encoded);
+if (decoded !== value) throw new Error("encoded incorrectly");
 ```
