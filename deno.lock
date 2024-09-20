@@ -1,0 +1,27 @@
+{
+  "version": "4",
+  "specifiers": {
+    "jsr:@std/encoding@*": "1.0.4",
+    "npm:@types/node@*": "22.5.4"
+  },
+  "jsr": {
+    "@std/encoding@1.0.4": {
+      "integrity": "2266cd516b32369e3dc5695717c96bf88343a1f761d6e6187a02a2bbe2af86ae"
+    }
+  },
+  "npm": {
+    "@types/node@22.5.4": {
+      "integrity": "sha512-FDuKUJQm/ju9fT/SeX/6+gBzoPzlVCzfzmGkwKvRHQVxi4BntVbyIwf6a4Xn62mrvndLiml6z/UBXIdEVjQLXg==",
+      "dependencies": [
+        "undici-types"
+      ]
+    },
+    "undici-types@6.19.8": {
+      "integrity": "sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw=="
+    }
+  },
+  "remote": {
+    "https://esm.sh/jsr/@sigma/rust-base64@0.2.5": "9281c8097efa04b83826639ca7791ae7a1bb3b81e84e97d07b1c81eeba47501c",
+    "https://esm.sh/v135/@jsr/sigma__rust-base64@0.2.5/denonext/sigma__rust-base64.mjs": "c55760ff630f5b13bffd1fb4977998f06d718f3d8b0e41071ba4c8def16d0e27"
+  }
+}
