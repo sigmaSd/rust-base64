@@ -11,8 +11,9 @@
  * ```ts
  * import { Buffer } from "node:buffer";
  * import assert from "node:assert";
- * const content = btoa("hello")
- * const encodeDecode = Buffer.from(Buffer.from(content, "base64")).toString("base64");
+ *
+ * const content = "hello"
+ * const encodeDecode = Buffer.from(Buffer.from(content).toString("base64"), "base64").toString()
  * assert(content === encodeDecode)
  * ```
  *
